@@ -19,9 +19,9 @@ CREATE TABLE usernames (
   username TEXT NOT NULL
 );
 
-CREATE TABLE roomnames (
+-- CREATE TABLE roomnames (
 
-);
+-- );
 
 
 

@@ -10,7 +10,7 @@ module.exports = {
       console.log('--modelsMessage--', message);
       // used to insert a message into the database
       let messagesView = 'select * from messages';
-      let messageRecord = `INSERT usernames VALUES (${null}, "${message}")`;
+      let messageRecord = `INSERT messages VALUES (${null}, "${message}")`;
       
       db.connection.query(messagesView, function(err, result) {
         if (!result.length) {
@@ -47,7 +47,7 @@ module.exports = {
     post: function (user, callback) {
       // used to insert a username into the database
       console.log('--modelsUsername--', user);
-      var usernamesView = 'select * from usernames';
+      var usernamesView = 'select * from usernames'; // possibly give it conditions
       var userRecord = `INSERT usernames VALUES (${null}, "${user}")`;
       
       db.connection.query(usernamesView, function(err, result) {

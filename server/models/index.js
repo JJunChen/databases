@@ -7,16 +7,20 @@ module.exports = {
       
     }, // a function which produces all the messages
     post: function (message, callback) {
-      // used to insert a message into the database
       console.log('--modelsMessage--', message);
-      db.connection.connect(function(err) {
-        if (err) {
-          throw err;
-        }
-        let messageRecord = `INSERT usernames VALUES (${null}, "${message}")`;
-        let messagesView = 'select * from messages';
-        
-        db.connection.query(messagesView, function(err, result) {
+      // used to insert a message into the database
+      let messagesView = 'select * from messages';
+      let messageRecord = `INSERT usernames VALUES (${null}, "${message}")`;
+      
+      db.connection.query(messagesView, function(err, result) {
+        if (!result.length) {
+          db.connection.query(messageRecord, function(err, result) {
+            if (err) {
+              throw err;
+            }
+            callback();
+          });
+        } else {        
           for (let i = 0; i < result.length; i++) {
             if (result[i] === message) {
               return;
@@ -29,7 +33,7 @@ module.exports = {
               });
             }
           }
-        });
+        }
       });
     } 
   },
@@ -43,14 +47,18 @@ module.exports = {
     post: function (user, callback) {
       // used to insert a username into the database
       console.log('--modelsUsername--', user);
-      db.connection.connect(function(err) {
-        if (err) {
-          throw err;
-        }
-        var userRecord = `INSERT usernames VALUES (${null}, "${user}")`;
-        var usernamesView = 'select * from usernames';
-        
-        db.connection.query(usernamesView, function(err, result) {
+      var usernamesView = 'select * from usernames';
+      var userRecord = `INSERT usernames VALUES (${null}, "${user}")`;
+      
+      db.connection.query(usernamesView, function(err, result) {
+        if (!result.length) {
+          db.connection.query(userRecord, function(err, result) {
+            if (err) {
+              throw err;
+            }
+            callback();
+          });
+        } else {        
           for (let i = 0; i < result.length; i++) {
             if (result[i] === user) {
               return;
@@ -63,7 +71,7 @@ module.exports = {
               });
             }
           }
-        });
+        }
       });
     }
   }

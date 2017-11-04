@@ -3,11 +3,13 @@ var models = require('../models');
 module.exports = {
   messages: {
     get: function (req, res) {
-      
+      // giving client all the messages
+      models.messages.get((messages) => {
+        res.end(messages);
+      });
       
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      console.log('--controllersMessage--', req.body);
       models.messages.post(req.body, () => {
         res.end();
       });
@@ -18,10 +20,11 @@ module.exports = {
     // Ditto as above
     get: function (req, res) {
       // serve up the users
-      
+      models.messages.get((usernames) => {
+        res.end(usernames);
+      });
     },
     post: function (req, res) {
-      console.log('--controllersUsername--', req.body.username);
       models.users.post(req.body.username, () => {
         res.end();
       });

@@ -67,11 +67,24 @@ describe('Persistent Node Chat Server', function() {
 
   it('Should output all messages from the DB', function(done) {
     // Let's insert a message into the db
-    var queryString = '';
+    var queryString = 'SELECT * FROM messages';
     var queryArgs = [];
     // TODO - The exact query string and query args to use
     // here depend on the schema you design, so I'll leave
     // them up to you. */
+    
+    (function () {
+      // Post a message to the node chat server:
+      request({
+        method: 'POST',
+        uri: 'http://127.0.0.1:3000/classes/messages',
+        json: {
+          username: 'jun',
+          message: 'Men like you can never change!',
+          roomname: 'main'
+        }
+      });
+    })();
 
     dbConnection.query(queryString, queryArgs, function(err) {
       if (err) { throw err; }

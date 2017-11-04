@@ -10,7 +10,7 @@ CREATE TABLE messages (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   username TEXT NOT NULL,
   text TEXT NOT NULL,
-  room TEXT NOT NULL
+  roomname TEXT NOT NULL
 );
 
 /* Create other tables and define schemas for them here! */

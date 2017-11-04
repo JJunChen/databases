@@ -11,4 +11,6 @@ module.exports.connection = mysql.createConnection({
   database: 'chat'
 });
 
+// module.exports.connection.connect();
+
 

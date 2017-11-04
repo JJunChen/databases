@@ -7,8 +7,10 @@ module.exports = {
       
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      
-      
+      console.log('--controllersMessage--', req.body.message);
+      models.messages.post(req.body.message, () => {
+        res.end();
+      });
     } // a function which handles posting a message to the database
   },
 
@@ -19,7 +21,7 @@ module.exports = {
       
     },
     post: function (req, res) {
-      console.log('--USERNAME--', req.body.username);
+      console.log('--controllersUsername--', req.body.username);
       models.users.post(req.body.username, () => {
         res.end();
       });

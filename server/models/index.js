@@ -48,6 +48,7 @@ module.exports = {
       // used to insert a username into the database
       console.log('--modelsUsername--', user);
       var usernamesView = 'select * from usernames'; // possibly give it conditions
+      
       var userRecord = `INSERT usernames VALUES (${null}, "${user}")`;
       
       db.connection.query(usernamesView, function(err, result) {

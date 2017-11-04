@@ -9,8 +9,8 @@ CREATE TABLE messages (
   /* Describe your table here.*/
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   username TEXT NOT NULL,
-  message TEXT NOT NULL,
-  room INT NOT NULL
+  text TEXT NOT NULL,
+  room TEXT NOT NULL
 );
 
 /* Create other tables and define schemas for them here! */

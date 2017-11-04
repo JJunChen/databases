@@ -7,8 +7,8 @@ module.exports = {
       
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      console.log('--controllersMessage--', req.body.message);
-      models.messages.post(req.body.message, () => {
+      console.log('--controllersMessage--', req.body);
+      models.messages.post(req.body, () => {
         res.end();
       });
     } // a function which handles posting a message to the database
